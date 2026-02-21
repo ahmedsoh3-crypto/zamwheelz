@@ -5,40 +5,40 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://www.zamwheelz.com"),
 
   title: {
-    default: "ZamWheelz Your Wheels! Your Deals!",
+    default: "Buy & Sell Cars in Zambia & South Africa | ZamWheelz",
     template: "%s | ZamWheelz",
   },
 
   description:
-    "ZamWheelz is the ultimate platform to buy & sell cars. Join the waitlist for exclusive early access and launch perks.",
+    "ZamWheelz is the modern car marketplace for Zambia and South Africa. Buy used cars, sell your car faster, and join the waitlist for early access and launch perks.",
 
   icons: {
     icon: "/favicon.png",
   },
 
   openGraph: {
-    title: "ZamWheelz Buy & Sell Cars Smarter",
+    title: "Buy & Sell Cars in Zambia & South Africa | ZamWheelz",
     description:
-      "Join the ZamWheelz waitlist and get early access to the next-generation car marketplace.",
+      "The smart way to buy and sell cars in Zambia and South Africa. Join the ZamWheelz waitlist for early access.",
     url: "https://www.zamwheelz.com",
     siteName: "ZamWheelz",
     images: [
       {
-        url: "/ZamWheelz.png", // 1200x630
+        url: "/ZamWheelz.png", // ideally 1200x630
         width: 1200,
         height: 630,
-        alt: "ZamWheelz  Car Marketplace",
+        alt: "ZamWheelz Car Marketplace",
       },
     ],
-    locale: "en_US",
+    locale: "en_ZA",
     type: "website",
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "ZamWheelz Buy & Sell Cars Smarter",
+    title: "Buy & Sell Cars in Zambia & South Africa | ZamWheelz",
     description:
-      "The ultimate platform to buy & sell cars. Join the waitlist for early access.",
+      "A smarter car marketplace built for Zambia and South Africa. Join the ZamWheelz waitlist for early access.",
     images: ["/ZamWheelz.png"],
   },
 };
@@ -48,21 +48,22 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const orgJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "ZamWheelz",
+    url: "https://www.zamwheelz.com",
+    logo: "https://www.zamwheelz.com/ZamWheelz.png",
+    areaServed: ["ZM", "ZA"],
+  };
+
   return (
     <html lang="en">
       <head>
-        {/* Google Search Logo Structured Data */}
+        {/* Google Search Logo / Brand Structured Data */}
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              name: "ZamWheelz",
-              url: "https://www.zamwheelz.com",
-              logo: "https://www.zamwheelz.com/ZamWheelz.png", 
-            }),
-          }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
         />
       </head>
       <body>{children}</body>
